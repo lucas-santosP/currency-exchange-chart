@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import currencyServices from "@/services";
-import { getCurrentDate, getDateBefore } from "@/utils";
+import { getDateBeforeDays } from "@/utils";
 
 Vue.use(Vuex);
 
@@ -12,11 +12,12 @@ export default new Vuex.Store({
       from: "USD"
     },
     date: {
-      start: getDateBefore(7),
+      start: getDateBeforeDays(7),
       end: ""
     },
     currenciesOptions: [],
-    chartData: null
+    chartData: null,
+    isFetching: false
   },
 
   mutations: {
@@ -48,31 +49,31 @@ export default new Vuex.Store({
       }
     },
     async getRatesHistory({ commit }, { from, to, startDate }) {
-      const currentDate = getCurrentDate();
+      const yesterday = getDateBeforeDays(1);
       const rates = await currencyServices.getRates({
         from,
         to,
         startDate,
-        endDate: currentDate
+        endDate: yesterday
       });
 
       const dates = [];
-      const dataCodeTo = [];
-      const dataCodeFrom = [];
+      const RatesCurrencyTo = [];
 
       for (const date of Object.keys(rates)) {
         dates.push(date.replace(/-/g, "/"));
-        dataCodeTo.push(rates[date][to]);
-        dataCodeFrom.push(rates[date][from]);
+        RatesCurrencyTo.push(rates[date][to]);
       }
 
       commit("setChartData", {
+        title: `${from} to ${to} Chart`,
         labels: dates,
         datasets: [
           {
             label: `${from} to ${to}`,
-            data: dataCodeTo,
-            backgroundColor: ["rgba(54, 162, 235, 0.3)"]
+            data: RatesCurrencyTo,
+            backgroundColor: ["rgba(0, 0, 0, 0.0)"],
+            borderColor: ["rgba(66, 185, 131)"]
           }
         ]
       });

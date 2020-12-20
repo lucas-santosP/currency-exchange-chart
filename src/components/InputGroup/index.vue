@@ -1,7 +1,12 @@
 <template>
   <div class="input-group">
-    <label for="to">From:</label>
-    <select id="from" list="currencies" v-model="currencyCodeFrom">
+    <label for="from">From:</label>
+    <select
+      id="from"
+      class="input-currency"
+      list="currencies"
+      v-model="currencyCodeFrom"
+    >
       <option
         v-for="currency in currenciesOptions"
         :key="currency.code"
@@ -12,7 +17,12 @@
     </select>
 
     <label for="to">To:</label>
-    <select id="to" list="currencies" v-model="currencyCodeTo">
+    <select
+      id="to"
+      class="input-currency"
+      list="currencies"
+      v-model="currencyCodeTo"
+    >
       <option
         v-for="currency in currenciesOptions"
         :key="currency.code"
@@ -22,8 +32,15 @@
       </option>
     </select>
 
-    <label for="to">Initial date:</label>
-    <input type="date" v-model="startDate" :max="currentDate" />
+    <label for="date">Initial date:</label>
+    <input
+      type="date"
+      id="date"
+      class="input-date"
+      v-model="startDate"
+      :max="yeterday"
+      :min="lastYear"
+    />
 
     <button class="button" @click="handleGetRates">
       SHOW CHART
@@ -33,13 +50,14 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
-import { getCurrentDate } from "@/utils";
+import { getDateBeforeDays } from "@/utils";
 
 export default {
   name: "InputGroup",
   data() {
     return {
-      currentDate: getCurrentDate()
+      yeterday: getDateBeforeDays(1),
+      lastYear: getDateBeforeDays(360)
     };
   },
   created() {
@@ -99,18 +117,25 @@ export default {
   justify-content: flex-start;
   margin: 1rem 0;
   padding: 0 1rem;
+  color: #2c3e50;
 
   > select,
   input {
-    width: 100%;
-    max-width: 500px;
-    min-width: 200px;
     margin: 1rem;
     margin-top: 0.5rem;
     height: 3rem;
     font-size: 1.2rem;
     padding: 0 0.5rem;
     border: #2c3e50 solid 2px;
+  }
+  .input-currency {
+    max-width: 500px;
+    min-width: 200px;
+  }
+
+  .input-date {
+    width: 200px;
+    text-align: center;
   }
 
   .button {
@@ -121,6 +146,7 @@ export default {
     font-weight: bold;
     color: #ffff;
     background-color: #42b983;
+    border: #2c3e50 solid 2px;
     transition: filter ease 200ms;
 
     &:hover {

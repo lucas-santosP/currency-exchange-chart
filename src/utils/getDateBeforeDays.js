@@ -1,4 +1,4 @@
-export default function getDateBefore(days) {
+export default function getDateBeforeDays(days = 0) {
   const date = new Date();
   const pastDate = date.getDate() - days;
   date.setDate(pastDate);

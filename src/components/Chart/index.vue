@@ -11,9 +11,7 @@ export default {
   },
 
   mounted() {
-    console.log(this.chartData);
-
-    this.renderChart(this.chartData, { responsive: true });
+    this.renderChart(this.chartData, this.options);
   }
 };
 </script>

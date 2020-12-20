@@ -1,0 +1,32 @@
+*,
+*:before,
+*:after {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+*:focus {
+  outline: none;
+  border-color: #007bff5d;
+  -webkit-box-shadow: 0 0 0 0.15rem #007bff5d;
+  box-shadow: 0 0 0 0.15rem #007bff5d;
+}
+
+button {
+  cursor: pointer;
+}

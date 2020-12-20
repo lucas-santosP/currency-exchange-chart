@@ -6,8 +6,17 @@
       <Chart
         v-if="chartData"
         :chartData="chartData"
-        :options="{ responsive: true }"
-        :style="'position:relative'"
+        :options="{
+          resposive: true,
+          maintainAspectRatio: false,
+          legend: { display: false },
+          title: {
+            display: true,
+            fontSize: 16,
+            text: 'USD to BRL Chart'
+          },
+          lineTension: 1
+        }"
       />
     </div>
   </div>
@@ -30,44 +39,22 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  background-color: #f8f8f8;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-
-*,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  vertical-align: baseline;
-  list-style: none;
-  border: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-}
-button {
-  cursor: pointer;
+  padding-top: 2rem;
+  width: 100%;
 }
 
 .chart-container {
-  width: 100%;
-  max-height: 650px;
-  max-width: 650px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   margin: 0 auto;
+  padding: 1rem;
+  height: auto;
+  width: 100%;
+  max-width: 1600px;
 }
 </style>

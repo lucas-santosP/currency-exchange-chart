@@ -1,4 +1,3 @@
-import getCurrentDate from "./getCurrentDate";
-import getDateBefore from "./getDateBefore";
+import getDateBeforeDays from "./getDateBeforeDays";
 
-export { getCurrentDate, getDateBefore };
+export { getDateBeforeDays };
