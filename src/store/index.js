@@ -17,7 +17,7 @@ export default new Vuex.Store({
     },
     currenciesOptions: [],
     chartData: null,
-    isFetching: false
+    onLoading: false
   },
 
   mutations: {
@@ -36,6 +36,13 @@ export default new Vuex.Store({
     },
     setChartData(state, newValue) {
       state.chartData = newValue;
+    },
+    setLoading(state, newValue) {
+      if (newValue) state.onLoading = newValue;
+      else
+        setTimeout(() => {
+          state.onLoading = newValue;
+        }, 500);
     }
   },
 
@@ -49,12 +56,14 @@ export default new Vuex.Store({
       }
     },
     async getRatesHistory({ commit }, { from, to, startDate }) {
-      const yesterday = getDateBeforeDays(1);
+      commit("setLoading", true);
+
+      const today = getDateBeforeDays();
       const rates = await currencyServices.getRates({
         from,
         to,
         startDate,
-        endDate: yesterday
+        endDate: today
       });
 
       const dates = [];
@@ -77,8 +86,8 @@ export default new Vuex.Store({
           }
         ]
       });
-    }
-  },
 
-  modules: {}
+      commit("setLoading", false);
+    }
+  }
 });

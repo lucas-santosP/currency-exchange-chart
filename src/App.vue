@@ -4,49 +4,43 @@
     <InputGroup />
     <div class="chart-container">
       <Chart
-        v-if="chartData"
+        v-if="!onLoading && chartData"
         :chartData="chartData"
         :options="{
           resposive: true,
           maintainAspectRatio: false,
           legend: { display: false },
-          title: {
-            display: true,
-            fontSize: 16,
-            text: 'USD to BRL Chart'
-          },
-          lineTension: 1
+          title: { display: true, fontSize: 16, text: chartData.title }
         }"
       />
+      <LoadingView :state="onLoading" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import { InputGroup, Chart } from "@/components";
+import { InputGroup, Chart, LoadingView } from "@/components";
 
 export default {
   name: "App",
-  components: {
-    InputGroup,
-    Chart
-  },
+  components: { InputGroup, Chart, LoadingView },
   computed: {
-    ...mapState(["chartData"])
+    ...mapState(["chartData", "onLoading"])
   }
 };
 </script>
 
 <style lang="scss">
-body {
-  background-color: #f8f8f8;
-}
 #app {
   text-align: center;
   color: #2c3e50;
-  padding-top: 2rem;
   width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 1rem 0;
 }
 
 .chart-container {
@@ -56,5 +50,6 @@ body {
   height: auto;
   width: 100%;
   max-width: 1600px;
+  min-height: 400px;
 }
 </style>
