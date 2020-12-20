@@ -17,7 +17,7 @@ export default {
   },
   async getRates({ from, to, startDate, endDate }) {
     const response = await api.get(
-      `/timeseries?start_date=${startDate}&end_date=${endDate}&symbols=${from},${to}&base=USD`
+      `/timeseries?start_date=${startDate}&end_date=${endDate}&symbols=${to}&base=${from}`
     );
     return response.data.rates;
   }

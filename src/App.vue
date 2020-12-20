@@ -1,20 +1,30 @@
 <template>
   <div id="app">
-    <h1 class="title">Currency Exchange</h1>
+    <h1 class="title">Currency Exchange Chart</h1>
     <InputGroup />
-    <!-- <Chart /> -->
+    <div class="chart-container">
+      <Chart
+        v-if="chartData"
+        :chartData="chartData"
+        :options="{ responsive: true }"
+        :style="'position:relative'"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import InputGroup from "@/components/InputGroup";
-// import Chart from "@/components/Chart";
+import { mapState } from "vuex";
+import { InputGroup, Chart } from "@/components";
 
 export default {
   name: "App",
   components: {
-    InputGroup
-    // Chart
+    InputGroup,
+    Chart
+  },
+  computed: {
+    ...mapState(["chartData"])
   }
 };
 </script>
@@ -49,5 +59,15 @@ export default {
 }
 button {
   cursor: pointer;
+}
+
+.chart-container {
+  width: 100%;
+  max-height: 650px;
+  max-width: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 </style>
