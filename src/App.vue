@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1 class="title">Currency Exchange</h1>
+    <InputGroup />
+    <!-- <Chart /> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import InputGroup from "@/components/InputGroup";
+// import Chart from "@/components/Chart";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    InputGroup
+    // Chart
   }
 };
 </script>
@@ -24,5 +27,27 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+  list-style: none;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+button {
+  cursor: pointer;
 }
 </style>
