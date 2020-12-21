@@ -6,7 +6,6 @@ export default {
   name: "Chart",
   mixins: [Line, reactiveProp],
   props: {
-    chartdata: { type: Object, default: null },
     options: { type: Object, default: null }
   },
 
