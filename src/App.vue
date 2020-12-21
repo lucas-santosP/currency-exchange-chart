@@ -49,7 +49,6 @@ export default {
   padding: 1rem;
   height: auto;
   width: 100%;
-  max-width: 1600px;
   min-height: 400px;
 }
 </style>
