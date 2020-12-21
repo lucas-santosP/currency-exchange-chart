@@ -81,8 +81,11 @@ export default new Vuex.Store({
           {
             label: `${from} to ${to}`,
             data: RatesCurrencyTo,
-            backgroundColor: ["rgba(0, 0, 0, 0.0)"],
-            borderColor: ["rgba(66, 185, 131)"]
+            backgroundColor: "rgba(0, 0, 0, 0.0)",
+            borderColor: "#42b983",
+            lineTension: 0,
+            pointBorderColor: "#2c3e50",
+            pointBackgroundColor: "#2c3e50"
           }
         ]
       });
