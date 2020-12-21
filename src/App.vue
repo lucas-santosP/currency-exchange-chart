@@ -46,7 +46,8 @@ export default {
 .chart-container {
   position: relative;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0 1rem;
+  padding-bottom: 1rem;
   height: auto;
   width: 100%;
   min-height: 400px;
