@@ -3,16 +3,7 @@
     <h1 class="title">Currency Exchange Chart</h1>
     <InputGroup />
     <div class="chart-container">
-      <Chart
-        v-if="!onLoading && chartData"
-        :chartData="chartData"
-        :options="{
-          resposive: true,
-          maintainAspectRatio: false,
-          legend: { display: false },
-          title: { display: true, fontSize: 16, text: chartData.title }
-        }"
-      />
+      <LineChart v-if="!onLoading && chartData" :chartData="chartData" />
       <LoadingView :state="onLoading" />
     </div>
   </div>
@@ -20,11 +11,11 @@
 
 <script>
 import { mapState } from "vuex";
-import { InputGroup, Chart, LoadingView } from "@/components";
+import { InputGroup, LineChart, LoadingView } from "@/components";
 
 export default {
   name: "App",
-  components: { InputGroup, Chart, LoadingView },
+  components: { InputGroup, LineChart, LoadingView },
   computed: {
     ...mapState(["chartData", "onLoading"])
   }
@@ -36,20 +27,20 @@ export default {
   text-align: center;
   color: #2c3e50;
   width: 100%;
-}
 
-.title {
-  font-size: 2rem;
-  margin: 1rem 0;
-}
+  .title {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
 
-.chart-container {
-  position: relative;
-  margin: 0 auto;
-  padding: 0 1rem;
-  padding-bottom: 1rem;
-  height: auto;
-  width: 100%;
-  min-height: 400px;
+  .chart-container {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+    height: auto;
+    width: 100%;
+    min-height: 400px;
+  }
 }
 </style>

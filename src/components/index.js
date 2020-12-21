@@ -1,5 +1,5 @@
-import Chart from "./Chart";
+import LineChart from "./LineChart";
 import InputGroup from "./InputGroup";
 import LoadingView from "./LoadingView";
 
-export { Chart, InputGroup, LoadingView };
+export { LineChart, InputGroup, LoadingView };
