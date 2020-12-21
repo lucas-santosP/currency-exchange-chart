@@ -1,12 +1,7 @@
 <template>
   <div class="input-group">
     <label for="from">From:</label>
-    <select
-      id="from"
-      class="input-currency"
-      list="currencies"
-      v-model="currencyCodeFrom"
-    >
+    <select id="from" class="input input-currency" v-model="currencyCodeFrom">
       <option
         v-for="currency in currenciesOptions"
         :key="currency.code"
@@ -17,12 +12,7 @@
     </select>
 
     <label for="to">To:</label>
-    <select
-      id="to"
-      class="input-currency"
-      list="currencies"
-      v-model="currencyCodeTo"
-    >
+    <select id="to" class="input input-currency" v-model="currencyCodeTo">
       <option
         v-for="currency in currenciesOptions"
         :key="currency.code"
@@ -36,13 +26,13 @@
     <input
       type="date"
       id="date"
-      class="input-date"
-      v-model="startDate"
+      class="input input-date"
       :max="yeterday"
       :min="lastYear"
+      v-model="startDate"
     />
 
-    <button class="button" @click="handleGetRates">
+    <button type="button" class="button" @click="handleGetCurrencyRates">
       SHOW CHART
     </button>
   </div>
@@ -65,12 +55,12 @@ export default {
   },
 
   methods: {
-    ...mapActions(["getCurrenciesOptions", "getRatesHistory"]),
+    ...mapActions(["getCurrenciesOptions", "getCurrencyRates"]),
 
-    handleGetRates() {
+    handleGetCurrencyRates() {
       const { currencyCodeFrom, currencyCodeTo, startDate } = this;
 
-      this.getRatesHistory({
+      this.getCurrencyRates({
         from: currencyCodeFrom,
         to: currencyCodeTo,
         startDate
@@ -111,6 +101,7 @@ export default {
 
 <style scoped lang="scss">
 .input-group {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,27 +110,26 @@ export default {
   padding: 0 1rem;
   color: #2c3e50;
 
-  > select,
-  input {
+  > .input {
+    width: 100%;
     margin: 1rem;
     margin-top: 0.5rem;
     height: 3rem;
     font-size: 1.2rem;
     padding: 0 0.5rem;
     border: #2c3e50 solid 2px;
-  }
-  .input-currency {
-    max-width: 500px;
-    min-width: 200px;
-  }
-
-  .input-date {
-    width: 200px;
-    text-align: center;
+    &.input-currency {
+      max-width: 500px;
+    }
+    &.input-date {
+      max-width: 200px;
+      text-align: center;
+    }
   }
 
-  .button {
-    width: 200px;
+  > .button {
+    width: 100%;
+    max-width: 200px;
     margin: 1rem;
     height: 3rem;
     padding: 0 0.5rem;
@@ -148,7 +138,6 @@ export default {
     background-color: #42b983;
     border: #2c3e50 solid 2px;
     transition: filter ease 200ms;
-
     &:hover {
       filter: brightness(110%);
     }

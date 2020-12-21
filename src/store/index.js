@@ -48,7 +48,7 @@ export default new Vuex.Store({
 
       commit("setCurrenciesOptions", currenciesNormalized);
     },
-    async getRatesHistory({ commit }, { from, to, startDate }) {
+    async getCurrencyRates({ commit }, { from, to, startDate }) {
       commit("setLoading", true);
 
       const today = getDateBeforeDays();
