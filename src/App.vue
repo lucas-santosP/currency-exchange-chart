@@ -2,6 +2,7 @@
   <div id="app">
     <h1 class="title">Currency Exchange Chart</h1>
     <InputGroup />
+
     <div class="chart-container">
       <LineChart v-if="!onLoading && chartData" :chartData="chartData" />
       <LoadingView :state="onLoading" />
