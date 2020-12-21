@@ -1,7 +1,7 @@
 import api from "./api";
 
 export default {
-  async get() {
+  async getAllCurrencies() {
     try {
       const response = await api.get("/symbols");
       const currencies = [];
@@ -12,13 +12,20 @@ export default {
 
       return currencies;
     } catch (error) {
-      console.log(error);
+      console.log("Error on getAllCurrencies\n", error);
+      return [];
     }
   },
   async getRates({ from, to, startDate, endDate }) {
-    const response = await api.get(
-      `/timeseries?start_date=${startDate}&end_date=${endDate}&symbols=${to}&base=${from}&places=3`
-    );
-    return response.data.rates;
+    try {
+      const response = await api.get(
+        `/timeseries?start_date=${startDate}&end_date=${endDate}&symbols=${to}&base=${from}&places=3`
+      );
+
+      return response.data.rates;
+    } catch (error) {
+      console.log("Error on getRates\n", error);
+      return null;
+    }
   }
 };

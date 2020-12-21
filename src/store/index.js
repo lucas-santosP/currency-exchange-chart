@@ -48,12 +48,9 @@ export default new Vuex.Store({
 
   actions: {
     async getCurrenciesOptions({ commit }) {
-      try {
-        const currencies = await currencyServices.get();
-        commit("setCurrenciesOptions", currencies);
-      } catch (error) {
-        console.log(error);
-      }
+      const currencies = await currencyServices.getAllCurrencies();
+
+      commit("setCurrenciesOptions", currencies);
     },
     async getRatesHistory({ commit }, { from, to, startDate }) {
       commit("setLoading", true);
@@ -67,11 +64,11 @@ export default new Vuex.Store({
       });
 
       const dates = [];
-      const RatesCurrencyTo = [];
+      const RatesCurrency = [];
 
       for (const date of Object.keys(rates)) {
         dates.push(date.replace(/-/g, "/"));
-        RatesCurrencyTo.push(rates[date][to]);
+        RatesCurrency.push(rates[date][to]);
       }
 
       commit("setChartData", {
@@ -80,7 +77,7 @@ export default new Vuex.Store({
         datasets: [
           {
             label: `${from} to ${to}`,
-            data: RatesCurrencyTo,
+            data: RatesCurrency,
             backgroundColor: "rgba(0, 0, 0, 0.0)",
             borderColor: "#42b983",
             lineTension: 0,
