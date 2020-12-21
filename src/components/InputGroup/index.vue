@@ -99,10 +99,10 @@ export default {
     },
     startDate: {
       set(newValue) {
-        this.$store.commit("setDate", { newValue, key: "start" });
+        this.$store.commit("setStartDate", newValue);
       },
       get() {
-        return this.$store.state.date.start;
+        return this.$store.state.startDate;
       }
     }
   }

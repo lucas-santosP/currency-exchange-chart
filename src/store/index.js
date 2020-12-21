@@ -11,10 +11,7 @@ export default new Vuex.Store({
       to: "BRL",
       from: "USD"
     },
-    date: {
-      start: getDateBeforeDays(7),
-      end: ""
-    },
+    startDate: getDateBeforeDays(7),
     currenciesOptions: [],
     chartData: null,
     onLoading: false
@@ -26,10 +23,8 @@ export default new Vuex.Store({
         state.currencyCode[key] = newValue;
       }
     },
-    setDate(state, { newValue, key }) {
-      if (key === "start" || key === "end") {
-        state.date[key] = newValue;
-      }
+    setStartDate(state, newValue) {
+      state.startDate = newValue;
     },
     setCurrenciesOptions(state, newValue) {
       state.currenciesOptions = newValue;
@@ -49,14 +44,15 @@ export default new Vuex.Store({
   actions: {
     async getCurrenciesOptions({ commit }) {
       const currencies = await currencyServices.getAllCurrencies();
+      const currenciesNormalized = Object.values(currencies);
 
-      commit("setCurrenciesOptions", currencies);
+      commit("setCurrenciesOptions", currenciesNormalized);
     },
     async getRatesHistory({ commit }, { from, to, startDate }) {
       commit("setLoading", true);
 
       const today = getDateBeforeDays();
-      const rates = await currencyServices.getRates({
+      const rates = await currencyServices.getRatesHistory({
         from,
         to,
         startDate,
