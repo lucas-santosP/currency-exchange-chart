@@ -15,7 +15,7 @@ A simple UI to display exchange rates in charts.
 
 ## Demo
 
-Demonstration online by [GitHub Pages](https://pages.github.com) on this [link](https://lucas-santosp.github.io/currency-exchange/).
+Demonstration online by [GitHub Pages](https://pages.github.com) on this [link](https://lucas-santosp.github.io/currency-exchange-chart/).
 
 ## Project setup
 
