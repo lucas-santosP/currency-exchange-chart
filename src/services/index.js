@@ -17,7 +17,7 @@ export default {
   async getRatesHistory({ from, to, startDate, endDate }) {
     try {
       const response = await api.get(
-        `/timeseries?start_date=${startDate}&end_date=${endDate}&symbols=${to}&base=${from}&places=3`
+        `/timeseries?start_date=${startDate}&end_date=${endDate}&symbols=${to}&base=${from}&places=3`,
       );
       if (!("data" in response) || !("rates" in response.data)) {
         throw new Error("Response error, invalid data received.");
@@ -28,5 +28,5 @@ export default {
       console.log("Error on getRates\n", error);
       return null;
     }
-  }
+  },
 };

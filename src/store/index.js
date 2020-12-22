@@ -9,12 +9,12 @@ export default new Vuex.Store({
   state: {
     currencyCode: {
       to: "BRL",
-      from: "USD"
+      from: "USD",
     },
     startDate: getDateBeforeDays(7),
     currenciesOptions: [],
     chartData: null,
-    onLoading: false
+    onLoading: false,
   },
 
   mutations: {
@@ -34,11 +34,8 @@ export default new Vuex.Store({
     },
     setLoading(state, newValue) {
       if (newValue) state.onLoading = newValue;
-      else
-        setTimeout(() => {
-          state.onLoading = newValue;
-        }, 500);
-    }
+      else setTimeout(() => (state.onLoading = newValue), 500); //minimum waiting time
+    },
   },
 
   actions: {
@@ -56,7 +53,7 @@ export default new Vuex.Store({
         from,
         to,
         startDate,
-        endDate: today
+        endDate: today,
       });
 
       const dates = [];
@@ -78,12 +75,12 @@ export default new Vuex.Store({
             borderColor: "#42b983",
             lineTension: 0,
             pointBorderColor: "#2c3e50",
-            pointBackgroundColor: "#2c3e50"
-          }
-        ]
+            pointBackgroundColor: "#2c3e50",
+          },
+        ],
       });
 
       commit("setLoading", false);
-    }
-  }
+    },
+  },
 });

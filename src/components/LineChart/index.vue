@@ -6,7 +6,7 @@ export default {
   name: "Chart",
   mixins: [Line, reactiveProp],
   props: {
-    options: { type: Object, default: null }
+    options: { type: Object, default: null },
   },
 
   mounted() {
@@ -15,13 +15,13 @@ export default {
       resposive: true,
       maintainAspectRatio: false,
       legend: { display: false },
-      title: { display: true, fontSize: 16, text: this.chartData.title }
+      title: { display: true, fontSize: 16, text: this.chartData.title },
     };
     if (this.options !== null) {
       chartOption = { ...chartOption, ...this.options };
     }
 
     this.renderChart(this.chartData, chartOption);
-  }
+  },
 };
 </script>

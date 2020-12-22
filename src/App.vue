@@ -18,8 +18,8 @@ export default {
   name: "App",
   components: { InputGroup, LineChart, LoadingView },
   computed: {
-    ...mapState(["chartData", "onLoading"])
-  }
+    ...mapState(["chartData", "onLoading"]),
+  },
 };
 </script>
 

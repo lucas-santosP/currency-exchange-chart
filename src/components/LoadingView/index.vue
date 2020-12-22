@@ -13,7 +13,7 @@
 <script>
 export default {
   name: "LoadingView",
-  props: { state: { type: Boolean, default: false } }
+  props: { state: { type: Boolean, default: false } },
 };
 </script>
 

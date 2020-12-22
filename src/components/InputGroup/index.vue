@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       yeterday: getDateBeforeDays(1),
-      lastYear: getDateBeforeDays(360)
+      lastYear: getDateBeforeDays(360),
     };
   },
   created() {
@@ -63,9 +63,9 @@ export default {
       this.getCurrencyRates({
         from: currencyCodeFrom,
         to: currencyCodeTo,
-        startDate
+        startDate,
       });
-    }
+    },
   },
 
   computed: {
@@ -77,7 +77,7 @@ export default {
       },
       get() {
         return this.$store.state.currencyCode.to;
-      }
+      },
     },
     currencyCodeFrom: {
       set(newValue) {
@@ -85,7 +85,7 @@ export default {
       },
       get() {
         return this.$store.state.currencyCode.from;
-      }
+      },
     },
     startDate: {
       set(newValue) {
@@ -93,9 +93,9 @@ export default {
       },
       get() {
         return this.$store.state.startDate;
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 
