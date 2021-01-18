@@ -4,7 +4,7 @@ A simple UI to display exchange rates in charts.
 
 ![Demo preview](./src/assets/demo-preview.png)
 
-## Build With
+## Built With
 
 - [Vue](https://vuejs.org) - A progressive, incrementally-adoptable JavaScript framework for building UI on the web.
 - [Vuex](https://vuex.vuejs.org) - A centralized state management pattern + library for Vue.js applications.
