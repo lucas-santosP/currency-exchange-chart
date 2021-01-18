@@ -1,6 +1,6 @@
 # Currency Exchange Chart
 
-A simple UI to display exchange rates in charts.
+A simple Vue.js app to display exchange rates in charts.
 
 ![Demo preview](./src/assets/demo-preview.png)
 
