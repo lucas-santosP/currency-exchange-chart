@@ -40,10 +40,12 @@ export default new Vuex.Store({
 
   actions: {
     async getCurrenciesOptions({ commit }) {
+      commit("setLoading", true);
       const currencies = await currencyServices.getAllCurrencies();
       const currenciesNormalized = Object.values(currencies);
 
       commit("setCurrenciesOptions", currenciesNormalized);
+      commit("setLoading", false);
     },
     async getCurrencyRates({ commit }, { from, to, startDate }) {
       commit("setLoading", true);

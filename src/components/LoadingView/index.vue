@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="state"
-    class="container-loading"
     @click.stop
     @keydown.stop
     @keypress.stop
+    class="loading-container"
   >
     <div class="spinner"></div>
   </div>
@@ -18,18 +18,29 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2005;
-  transform: translate(-50%, -50%);
-  height: 60px;
-  width: 60px;
-  border: 8px solid #42b983;
-  border-left-color: #338d64;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.loading-container {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: wait;
+  background-color: rgba(255, 255, 255, 0.52);
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1005;
+    transform: translate(-50%, -50%);
+    height: 60px;
+    width: 60px;
+    border: 8px solid #42b983;
+    border-left-color: #338d64;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
 }
 
 @keyframes spin {

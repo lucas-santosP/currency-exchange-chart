@@ -4,9 +4,10 @@
     <InputGroup />
 
     <div class="chart-container">
-      <LineChart v-if="!onLoading && chartData" :chartData="chartData" />
-      <LoadingView :state="onLoading" />
+      <LineChart v-if="chartData" :chartData="chartData" />
     </div>
+
+    <LoadingView :state="onLoading" />
   </div>
 </template>
 
@@ -28,6 +29,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   width: 100%;
+  height: 100vh;
 
   .title {
     font-size: 2rem;
