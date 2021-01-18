@@ -1,13 +1,15 @@
 <template>
-  <div
-    v-if="state"
-    @click.stop
-    @keydown.stop
-    @keypress.stop
-    class="loading-container"
-  >
-    <div class="spinner"></div>
-  </div>
+  <transition name="fade">
+    <div
+      v-if="state"
+      @click.stop
+      @keydown.stop
+      @keypress.stop
+      class="loading-container"
+    >
+      <div class="spinner"></div>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -47,5 +49,14 @@ export default {
   to {
     transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
