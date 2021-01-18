@@ -11,7 +11,7 @@ A simple UI to display exchange rates in charts.
 - [Vue Chart.js](https://vue-chartjs.org) - A Vue.js wrapper for [Chart.js](https://www.chartjs.org), that is a JavaScript charting using HTML5 &lt;canvas>.
 - [Axios](https://github.com/axios/axios) - A promise based HTTP client for the browser and node.js.
 - [SCSS](https://sass-lang.com) - The most mature, stable, and powerful professional grade CSS extension language in the world.
-- [Exchange rates API](https://exchangerate.host/#/) - A simple and lightweight free service for current and historical foreign exchange rates
+- [ExchangeRate API](https://exchangerate.host/#/) - A simple and lightweight free service for current and historical foreign exchange rates.
 
 ## Demo
 
